@@ -21,6 +21,10 @@ public class Runigram {
 		imageOut = flippedHorizontally(tinypic);
 		System.out.println();
 		print(imageOut);
+
+		
+		
+
 		
 		//// Write here whatever code you need in order to test your work.
 		//// You can reuse / overide the contents of the imageOut array.
@@ -42,7 +46,20 @@ public class Runigram {
 		// creates from the 3 colors a new Color object, and 
 		// makes pixel (i,j) refer to that object.
 		//// Replace the following statement with your code.
-		return null;
+		int red= 0;
+		int green= 0;
+		int blue= 0;
+		for (int i = 0; i < numRows; i++) {
+			for (int j = 0; j < numCols; j++) {
+				red= in.readInt();
+				green = in.readInt();
+				blue = in.readInt();
+				
+				image [i][j]= new Color (red, green, blue);
+			}
+			
+		}
+		return image;
 	}
 
     // Prints the RGB values of a given color.
@@ -60,39 +77,84 @@ public class Runigram {
 	// For example, to check that some image processing function works correctly,
 	// we can apply the function and then use this function to print the resulting image.
 	private static void print(Color[][] image) {
-		//// Replace this comment with your code
+		Color currentColor= new Color (0,0,0); 
+		for (int i = 0; i < image.length; i++) {
+			for (int j = 0; j < image[0].length; j++) {
+				print(image[i][j]);
+			}
+			System.out.printf("%n");
+		}	
 	}
 	
 	/**
 	 * Returns an image which is the horizontally flipped version of the given image. 
 	 */
 	public static Color[][] flippedHorizontally(Color[][] image) {
-		//// Replace the following statement with your code
-		return null;
+		int numRows= image.length;
+		int numCols= image[0].length;
+		Color flip [][]= new Color [numRows][numCols];
+
+		for (int i = 0; i < numRows; i++) {
+			for (int j = 0; j < numCols; j++) {
+				int oppositeColor= 4-1-j;
+
+				image[i][j]= flip[i][oppositeColor];
+				
+			}
+			
+		}
+		return flip;
 	}
 	
 	/**
 	 * Returns an image which is the vertically flipped version of the given image. 
 	 */
 	public static Color[][] flippedVertically(Color[][] image){
-		//// Replace the following statement with your code
-		return null;
+
+		int numRows= image.length;
+		int numCols= image[0].length;
+		Color flip [][]= new Color [numRows][numCols];
+
+		for (int i = 0; i < numRows; i++) {
+			for (int j = 0; j < numCols; j++) {
+				int oppositeColor= 4-1-i;
+
+				image[i][j]= flip[oppositeColor][j];
+				
+			}
+			
+		}
+		return flip;
 	}
 	
 	// Computes the luminance of the RGB values of the given pixel, using the formula 
 	// lum = 0.299 * r + 0.587 * g + 0.114 * b, and returns a Color object consisting
 	// the three values r = lum, g = lum, b = lum.
 	public static Color luminance(Color pixel) {
-		//// Replace the following statement with your code
-		return null;
+		int grey= (int)((0.299*pixel.getRed())+( 0.587*pixel.getGreen())+( 0.114*pixel.getBlue()));
+		Color lumi= new Color(grey, grey, grey);
+
+		return lumi ;
 	}
 	
 	/**
 	 * Returns an image which is the grayscaled version of the given image.
 	 */
 	public static Color[][] grayScaled(Color[][] image) {
-		//// Replace the following statement with your code
-		return null;
+
+		int numRows= image.length;
+		int numCols= image[0].length;
+		Color greyPic [][]= new Color [numRows][numCols];
+
+		for (int i = 0; i < numRows; i++) {
+			for (int j = 0; j < numCols; j++) {
+
+				greyPic[i][j]= luminance(image[i][j]);
+				
+			}
+			
+		}
+		return greyPic;
 	}	
 	
 	/**
