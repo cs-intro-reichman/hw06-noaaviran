@@ -235,6 +235,9 @@ public class Runigram {
 
 			Color [][] morphedImage = blend(source, target, alpha);
 			setCanvas(morphedImage);
+
+			
+			show(morphedImage);
 		}
 	}
 
