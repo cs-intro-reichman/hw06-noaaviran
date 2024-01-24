@@ -237,7 +237,10 @@ public class Runigram {
 			setCanvas(morphedImage);
 
 			
-			show(morphedImage);
+			display(morphedImage);
+
+			StdDraw.clear();
+
 		}
 	}
 
