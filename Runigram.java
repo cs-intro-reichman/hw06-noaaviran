@@ -96,7 +96,7 @@ public class Runigram {
 
 		for (int i = 0; i < numRows; i++) {
 			for (int j = 0; j < numCols; j++) {
-				int oppositeColor= 4-1-j;
+				int oppositeColor= numCols-1-j;
 
 				image[i][j]= flip[i][oppositeColor];
 				
@@ -117,7 +117,7 @@ public class Runigram {
 
 		for (int i = 0; i < numRows; i++) {
 			for (int j = 0; j < numCols; j++) {
-				int oppositeColor= 4-1-i;
+				int oppositeColor= numRows-1-i;
 
 				image[i][j]= flip[oppositeColor][j];
 				
